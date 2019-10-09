@@ -11,14 +11,12 @@ import Login from './views/login/index.vue'
 import FilmInfo from './views/film/index.vue'
 import Money from './views/money/index.vue'
 
-
-
 Vue.use(Router)
 
 const router = new Router({
   routes: [
     {
-      path:'/',
+      path: '/',
       component: Home,
       children: [
         {
@@ -33,6 +31,10 @@ const router = new Router({
           path: '/center',
           component: Center
         },
+        {
+          path: '',
+          redirect: '/films'
+        }
       ]
     },
     {
@@ -50,8 +52,8 @@ const router = new Router({
     {
       path: '/money',
       component: Money
-    },
+    }
   ]
 })
 
-export default router;
+export default router
