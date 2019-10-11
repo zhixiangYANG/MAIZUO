@@ -14,8 +14,8 @@
 </template>
 
 <script>
-export default {
-  name: 'Center',
+// export default {
+//   name: 'Center',
 
   /* data() {
     let userInfo = window.localStorage.getItem('userInfo')
@@ -24,8 +24,8 @@ export default {
     }
   } */
 
-  created() {
-    this.$store.dispatch('a')
-  }
-}
+//   created() {
+//     this.$store.dispatch('a')
+//   }
+// }
 </script>

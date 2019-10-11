@@ -1,20 +1,13 @@
-//拆分出来得影片仓库模块
+import axios from 'axios'
 
 export default {
+  namespaced: true,
+
   state: {
-    filmList: [] //影片列表数据
+    filmList: [] //影片列表集合
   },
 
-  getters: {
-    //当前影片的数量
-    filmCount(state) {
-      return state.filmList.length
-    },
-
-    msg(state) {
-      return state.filmList.length
-    }
-  },
+  getters: {},
 
   mutations: {
     setFilmList(state, payload) {
@@ -23,19 +16,30 @@ export default {
   },
 
   actions: {
-    a() {
-      console.log('film - a')
-    },
-
-    getFilmList(context, payload) {
-      setTimeout(() => {
-        let result = [
-          { filmId: 1, filmName: '中国机长' },
-          { filmId: 2, filmName: '我和我的祖国' }
-        ]
-
-        context.commit('setFilmList', result)
-      }, 3000)
+    getFilmList({ commit }, payload) {
+      axios
+        .get('https://m.maizuo.com/gateway', {
+          params: {
+            cityId: 440300, //城市id
+            pageNum: 1, //页码
+            pageSize: 10, //每页显示条数
+            type: 1, //影片类型，正在热映是1，即将上映是2
+            k: 3561421
+          },
+          headers: {
+            'X-Client-Info':
+              '{"a":"3000","ch":"1002","v":"5.0.4","e":"156975901817665200492650"}',
+            'X-Host': 'mall.film-ticket.film.list'
+          }
+        })
+        .then(reponse => {
+          // console.log(reponse)
+          let result = reponse.data
+          console.log(result)
+          if (result.status === 0) {
+            commit('setFilmList', result.data.films)
+          }
+        })
     }
   }
 }

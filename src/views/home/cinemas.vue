@@ -3,14 +3,14 @@
     <!-- 二级路由页面，影院列表页 -->
     <h1>影院列表页</h1>
 
-    <ul>
+    <!-- <ul ul>
       <li v-for="item in cinema.cinemaList" :key="item.cinemaId">{{ item.cinemaName }}</li>
-    </ul>
+    </ul>-->
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+/* import { mapState } from 'vuex'
 export default {
   name: 'Cinemas',
 
@@ -21,5 +21,5 @@ export default {
   created() {
     this.$store.dispatch('getCinemaList')
   }
-}
+} */
 </script>
